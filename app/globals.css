@@ -2,9 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-[data-theme="dark"],
-[data-theme="dark"] body {
-  background: #7a7a7a;
+@layer base{
+  body {
+      @apply dark:bg-neutral-950
+  }
 }
 
 html {
@@ -42,10 +43,10 @@ html {
     transform: translateY(0px);
   }
   25% {
-    transform: translateY(5px);
+    transform: translateY(7px);
   }
   75% {
-    transform: translateY(-5px);
+    transform: translateY(-7px);
   }
   100% {
     transform: translateY(0px);
@@ -57,7 +58,7 @@ html {
 }
 
 .animate-updown {
-  animation: uptodown 5s linear infinite;
+  animation: uptodown 5s infinite ease-in-out alternate;
 }
 
 .animate-wiggle {
@@ -132,13 +133,13 @@ html {
 .polkadot {
   background-color: transparent;
   opacity: 1;
-  background-image: radial-gradient(#000000 0.75px, #ffffff 0.75px);
+  background-image: radial-gradient(#0A0A0A7C 0.75px, #ffffff 0.75px);
   background-size: 15px 15px;
 }
 
 .polkadotdark {
   background-color: transparent;
   opacity: 1;
-  background-image: radial-gradient(#f0f0f0 0.75px, #000000 0.75px);
+  background-image: radial-gradient(#f0f0f07C 0.75px, #0a0a0a 0.75px);
   background-size: 15px 15px;
 }

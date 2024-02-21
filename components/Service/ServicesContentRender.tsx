@@ -29,23 +29,27 @@ const ServicesContent = ({ serviceData }: Service) => {
       <div className="grid sm:grid-cols-2 grid-cols-1 items-center gap-12 relative">
         <div className="service__head sm:order-first order-last">
           <div className="service__category">
-            <Chip color="primary" variant="bordered">
+            <div className="inline-flex px-2 pt-0.5 pb-1 bg-primary text-white font-semibold rounded-full text-sm">
               Produk & Layanan
-            </Chip>
+            </div>
           </div>
           <div className="service__title py-5">
             <div className="text-xl font-medium text-default-500 mb-2 mt-3 flex items-center gap-2">
               <div className="bg-default-500 w-2 h-2 rounded-full"></div>
               <div>{serviceData?.secondaryTitle}</div>
             </div>
-            <div className="sm:text-5xl text-4xl font-extrabold">{serviceData?.title}</div>
+            <div className="sm:text-5xl text-4xl font-extrabold text-primary">{serviceData?.title}</div>
           </div>
         </div>
-        <div className="service__image">
-          <Image src={`${serviceData?.mainImage.asset.url}`} width={1024} height={300} alt={serviceData?.title} className="w-screen h-[320px] object-cover object-center" radius="lg" />
-        </div>
+        
+        
+          <div className="service__image">
+            <Image src={`${serviceData?.mainImage.asset.url}`} width={1024} height={300} alt={serviceData?.title} className="w-screen h-[320px] object-cover object-center !rounded-3xl" />
+          </div>
+        
+        
       </div>
-      <div className="sm:max-w-screen-lg mx-auto px-5 py-16 text-default-700">
+      <div className="sm:max-w-screen-lg mx-auto w-full py-16 text-default-700">
         <PortableText value={serviceData?.body} components={RichText} />
       </div>
     </div>

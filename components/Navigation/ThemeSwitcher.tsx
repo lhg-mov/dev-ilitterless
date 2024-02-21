@@ -49,7 +49,7 @@ export function ThemeSwitcher(props: any) {
   return (
     <Suspense fallback={<Loading size="w-2 h-1 rounded-full" />}>
       <div className="theme__switcher">
-        <Switch color="primary" size="md" onClick={handleSwitchClick} defaultSelected={theme === "dark"} startContent={<SunIcon />} endContent={<MoonIcon />}></Switch>
+        <Switch color="primary" size="sm" onClick={handleSwitchClick} defaultSelected={theme === "dark"} startContent={<SunIcon />} endContent={<MoonIcon />}></Switch>
       </div>
     </Suspense>
   );

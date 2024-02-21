@@ -3,7 +3,7 @@
 }
 
 .intro {
-  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+  @apply sm:max-w-screen-xl mx-auto px-5 pt-2;
 }
 
 .calltoaction {

@@ -124,7 +124,7 @@ export const getIntroCollab = async () => {
 export const getIntroSlide = async () => {
   try {
     const introSlideQuery = await client.fetch(
-      groq`*[_type == "introImage"][0...3]{
+      groq`*[_type == "introImage"][0]{
         image {
           asset->{
             url

@@ -9,8 +9,8 @@ const SearchHeader = ({ query, categories }: Props) => {
   if (query && categories) {
     return (
       <div>
-        <h2 className={`sm:text-5xl text-4xl font-semibold text-start text-primary`}>Search Result</h2>
-        <h1 className={`text-default-600`}>
+        <h2 className={`sm:text-5xl text-4xl font-extrabold text-start text-primary`}>Search Result</h2>
+        <h1 className={`text-default-600 font-medium`}>
           "{query}" in <span className="capitalize">{categories}</span>
         </h1>
       </div>
@@ -20,8 +20,8 @@ const SearchHeader = ({ query, categories }: Props) => {
   if (query) {
     return (
       <div>
-        <h2 className={`sm:text-5xl text-4xl font-semibold text-start text-primary`}>Search Result</h2>
-        <h1 className={`text-default-600`}>{query}</h1>
+        <h2 className={`sm:text-5xl text-4xl font-extrabold text-start text-primary`}>Search Result</h2>
+        <h1 className={`text-default-600 font-medium`}>{query}</h1>
       </div>
     );
   }
@@ -29,8 +29,8 @@ const SearchHeader = ({ query, categories }: Props) => {
   if (categories) {
     return (
       <div>
-        <h2 className={`sm:text-5xl text-4xl font-semibold text-start text-primary`}>Categories</h2>
-        <h1 className={`text-white-600`}>
+        <h2 className={`sm:text-5xl text-4xl font-extrabold text-start text-primary`}>Categories</h2>
+        <h1 className={`text-white-600 font-medium`}>
           <span className="capitalize">{categories}</span>
         </h1>
       </div>

@@ -14,7 +14,7 @@ const BlogPage = async () => {
     <div className={style.blog}>
       <div className="blog__title sm:flex block justify-between items-center pb-16">
         <div>
-          <div className="sm:text-5xl text-4xl font-extrabold">Blog</div>
+          <div className="sm:text-5xl text-4xl font-extrabold text-primary">Blog</div>
           <div className="text-default-500 sm:w-3/5 w-full mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda ea, libero quod labore nulla amet?</div>
         </div>
         <div className="search__blog">

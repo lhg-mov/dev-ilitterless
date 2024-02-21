@@ -19,22 +19,22 @@ const PartnerPage = async () => {
     <>
       <Navigation />
       <div className={style.partnerpage}>
-        <div className="partner_brand__content logos flex gap-10 sm:before:left-0 sm:before:bg-gradient-to-r sm:before:from-white sm:after:right-0 sm:after:bg-gradient-to-l sm:after:from-white sm:dark:before:left-0 sm:dark:before:bg-gradient-to-r sm:dark:before:from-black sm:dark:after:right-0 sm:dark:after:bg-gradient-to-l sm:dark:after:from-black">
+        <div className="partner_brand__content logos flex gap-10 sm:before:left-0 sm:before:bg-gradient-to-r sm:before:from-white sm:after:right-0 sm:after:bg-gradient-to-l sm:after:from-white sm:dark:before:left-0 sm:dark:before:bg-gradient-to-r sm:dark:before:from-neutral-950 sm:dark:after:right-0 sm:dark:after:bg-gradient-to-l sm:dark:after:from-neutral-950">
           <MitraBrandRender />
         </div>
 
         <div className="partner_page__title">
-          <div className="relative flex gap-2 items-center w-40 mb-3">
-            <div className="border-t-2 border-default-700 flex-grow"></div>
-            <div className="text-xl text-default-700 font-extrabold flex-shrink">Our Partner</div>
+          <div className="relative flex gap-2 items-center w-40 mb-7">
+            <div className="border-t-2 border-primary flex-grow"></div>
+            <div className="text-xl text-primary font-extrabold flex-shrink">Our Partner</div>
           </div>
-          <div className="sm:text-5xl text-4xl font-semibold sm:w-3/5 w-full">Kami telah Menjalin Kerja Sama dengan Berbagai Pihak.</div>
-          <div className="action__button mt-5">
+          <div className="sm:text-5xl text-4xl font-extrabold sm:w-3/5 w-full">Kami telah Menjalin Kerja Sama dengan Berbagai Pihak.</div>
+          <div className="action__button mt-8">
             <ButtonUI text="Ayo Bergabung!" link="/partner/sign-up" type={"accent"} />
           </div>
         </div>
 
-        <div className="partner_cafe__content logos flex gap-10 sm:before:left-0 sm:before:bg-gradient-to-r sm:before:from-white sm:after:right-0 sm:after:bg-gradient-to-l sm:after:from-white sm:dark:before:left-0 sm:dark:before:bg-gradient-to-r sm:dark:before:from-black sm:dark:after:right-0 sm:dark:after:bg-gradient-to-l sm:dark:after:from-black">
+        <div className="partner_cafe__content logos flex gap-10 sm:before:left-0 sm:before:bg-gradient-to-r sm:before:from-white sm:after:right-0 sm:after:bg-gradient-to-l sm:after:from-white sm:dark:before:left-0 sm:dark:before:bg-gradient-to-r sm:dark:before:from-neutral-950 sm:dark:after:right-0 sm:dark:after:bg-gradient-to-l sm:dark:after:from-neutral-950">
           <MitraCafeRender />
         </div>
 

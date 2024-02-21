@@ -31,19 +31,20 @@ type Collab = {
 
 const IntroTitleRender = async () => {
   const renderTitle: Title = await getIntro();
-  const renderCollab: Collab = await getIntroCollab();
+  // const renderCollab: Collab = await getIntroCollab();
   return (
     <div className="intro_title__area">
-      <div className="sm:text-5xl text-4xl font-extrabold sm:text-nowrap uppercase">
+      <div className="sm:text-6xl text-5xl font-black sm:text-nowrap uppercase sm:text-end text-start">
         {renderTitle.tagline.slice(0, 6)} <span className="text-primary">{renderTitle.tagline.slice(6, 9)}</span>
         {renderTitle.tagline.slice(9, 11)} <br /> <span className="text-primary">{renderTitle.tagline.slice(11, 14)}</span>
         {renderTitle.tagline.slice(14, 22)}
       </div>
 
-      <div className="hastag text-xl mt-4 text-default-500 mb-7">{renderTitle.hastag}</div>
-      <ButtonUI endContent={<FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />} link={renderTitle.buttonLink} text={renderTitle.buttonText} />
+      <div className="hastag text-xl mt-4 text-default-500 mb-7 sm:text-end text-start">{renderTitle.hastag}</div>
+      <div className="flex sm:justify-end justify-start"><ButtonUI endContent={<FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />} link={renderTitle.buttonLink} text={renderTitle.buttonText}/></div>
+      
 
-      <div className="ilitterless__collab mt-10">
+      {/* <div className="ilitterless__collab mt-10">
         {renderCollab.status ? (
           <div className="hidden">No Collaboration Now!</div>
         ) : (
@@ -65,7 +66,7 @@ const IntroTitleRender = async () => {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

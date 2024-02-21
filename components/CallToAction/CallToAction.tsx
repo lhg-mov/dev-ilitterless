@@ -2,7 +2,6 @@ import React from "react";
 
 import style from "@/app/ilitterless.module.css";
 
-import { Chip } from "@nextui-org/react";
 import ButtonUI from "../ui/ButtonUI";
 
 const CallToAction = () => {
@@ -12,8 +11,8 @@ const CallToAction = () => {
         <div className={`${style.calltoaction}`}>
           <div className={`text-center py-12`}>
             <div className="cta__title">
-              <div className="text-xl mb-4">
-                <Chip className="bg-neutral-900 text-white">#PilahSampahItuMudah #SayaMinimSampah</Chip>
+              <div className="mb-4">
+                <div className="bg-neutral-900 sm:text-md text-tiny text-white inline-flex rounded-full py-1 px-4">#PilahSampahItuMudah #SayaMinimSampah</div>
               </div>
               <div className="sm:text-5xl text-3xl font-extrabold">
                 Dorong Perubahan, <br /> Mulai Dari <span className="text-primary">Dirimu</span> Sendiri
@@ -22,7 +21,7 @@ const CallToAction = () => {
             <div className="cta__button mt-10">
               <ButtonUI
                 text="Mulai Sekarang"
-                link="/start"
+                link="/waiting"
                 type="primary"
                 endContent={
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -38,8 +37,8 @@ const CallToAction = () => {
         <div className={`${style.calltoaction}`}>
           <div className={`text-center py-12`}>
             <div className="cta__title">
-              <div className="text-xl mb-4">
-                <Chip className="bg-neutral-900 text-white">#PilahSampahItuMudah #SayaMinimSampah</Chip>
+            <div className="mb-4">
+                <div className="bg-neutral-900 sm:text-md text-tiny text-white inline-flex rounded-full py-1 px-4">#PilahSampahItuMudah #SayaMinimSampah</div>
               </div>
               <div className="sm:text-5xl text-4xl font-extrabold">
                 Dorong Perubahan, <br /> Mulai Dari <span className="text-primary">Dirimu</span> Sendiri
@@ -48,7 +47,7 @@ const CallToAction = () => {
             <div className="cta__button mt-10">
               <ButtonUI
                 text="Mulai Sekarang"
-                link="/start"
+                link="/waiting"
                 type="primary"
                 endContent={
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

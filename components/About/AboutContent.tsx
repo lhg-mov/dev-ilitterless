@@ -15,9 +15,9 @@ const AboutContent = async () => {
   return (
     <div className={style.about}>
       <div className="about__title relative sm:flex grid grid-cols-1 items-center gap-3 pt-10 pb-12">
-        <div className="text-5xl font-extrabold flex-shrink">{render.title}</div>
+        <div className="text-5xl font-extrabold flex-shrink text-primary">{render.title}</div>
         <div className="flex-grow border-t-2 border-black dark:border-white sm:flex hidden"></div>
-        <div className="text-lg flex-shrink text-primary">{render.secondaryTitle}</div>
+        <div className="text-lg flex-shrink font-semibold">{render.secondaryTitle}</div>
       </div>
 
       <div className="about__content sm:max-w-screen-lg mx-auto">
@@ -42,7 +42,7 @@ const AboutContent = async () => {
                 <li className="mb-10 ms-5" key={tml._id}>
                   <div className="absolute w-3 h-3 bg-primary rounded-full mt-5 -start-[0.355rem] border-1.5 border-white dark:border-black "></div>
                   <div className="mb-1 text-lg leading-none text-default-500">{tml.year}</div>
-                  <h3 className="text-2xl font-semibold text-default-800">{tml.title}</h3>
+                  <h3 className="text-2xl font-bold text-default-800">{tml.title}</h3>
                   <div className="my-5 text-base font-normal text-default-700 ml-3">
                     <PortableText value={tml?.body} components={RichTextAbout} />
                   </div>
@@ -56,7 +56,7 @@ const AboutContent = async () => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
                   </svg>
                 </time>
-                <div className="sm:text-5xl text-3xl font-semibold text-primary">{render.soonTitle}</div>
+                <div className="sm:text-5xl text-3xl font-extrabold text-primary">{render.soonTitle}</div>
                 <div className="my-5 text-base font-normal text-default-700 ml-5">{render.soonMessage}</div>
               </li>
             </ol>

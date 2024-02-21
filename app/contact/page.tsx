@@ -22,7 +22,7 @@ const ContactPage = () => {
                 <div className="flex-shrink">Contact</div>
               </div>
               <div className="mt-3">
-                <div className="text-4xl font-semibold">Beritahu Kami Jika Kamu Membutuhkan Sesuatu</div>
+                <div className="sm:text-5xl text-4xl font-extrabold text-primary">Beritahu Kami Jika Kamu Membutuhkan Sesuatu</div>
                 <div className="description text-default-500 mt-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, laudantium consequuntur debitis cumque amet eveniet.</div>
               </div>
               <div className="social__media flex flex-wrap items-center sm:gap-10 gap-5 mt-10">

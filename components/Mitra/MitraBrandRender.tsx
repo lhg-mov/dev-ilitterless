@@ -21,7 +21,7 @@ const MitraBrandRender = () => {
   const memoData = useMemo(() => data, [data]);
 
   return (
-    <div className="partner_brand__content logos flex gap-10 sm:before:left-0 sm:before:bg-gradient-to-r sm:before:from-white sm:after:right-0 sm:after:bg-gradient-to-l sm:after:from-white sm:dark:before:left-0 sm:dark:before:bg-gradient-to-r sm:dark:before:from-black sm:dark:after:right-0 sm:dark:after:bg-gradient-to-l sm:dark:after:from-black">
+    <div className="partner_brand__content logos flex gap-10 sm:before:left-0 sm:before:bg-gradient-to-r sm:before:from-white sm:after:right-0 sm:after:bg-gradient-to-l sm:after:from-white sm:dark:before:left-0 sm:dark:before:bg-gradient-to-r sm:dark:before:from-neutral-950 sm:dark:after:right-0 sm:dark:after:bg-gradient-to-l sm:dark:after:from-neutral-950">
       <div className="logos-slide flex gap-10 items-center">
         {memoData.map((img: any) => {
           const uid = uuidv4();

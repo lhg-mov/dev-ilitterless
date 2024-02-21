@@ -31,6 +31,8 @@ const BlogPost = async ({ blogPostData, blogPostRelated }: { blogPostData: Post;
   const messageToCopy = `#PilahSampahItuMudah. Hai Sob! Yuk baca artikel iLitterless Indonesia dengan klik link berikut https://ilitterlessindonesia.org/blog/post/${blogPostData?.slug}`;
   const UrlSlug = encodeURIComponent(`${messageToCopy}`);
 
+  
+
   return (
     <div className={style.blogpost}>
       <div className="blog__content">
@@ -40,7 +42,7 @@ const BlogPost = async ({ blogPostData, blogPostRelated }: { blogPostData: Post;
               {blogPostData?.categories.map((cat, index) => (
                 <div key={index}>
                   <Link href={{ pathname: `/search?categories=${cat?.title}` }} as={`/search?categories=${cat?.title}`}>
-                    <div className={`text-sm font-normal text-primary text-start`}>{cat?.title}</div>
+                    <div className={`text-sm font-semibold text-primary text-start`}>{cat?.title}</div>
                   </Link>
                 </div>
               ))}
@@ -69,7 +71,7 @@ const BlogPost = async ({ blogPostData, blogPostRelated }: { blogPostData: Post;
                       <Avatar key={index} src={urlFor(item?.image.asset).url()} size="sm" />
                     ))}
                   </AvatarGroup>
-                  <p className={` font-medium`}>Tim Penulis</p>
+                  <p className={`font-semibold`}>Tim Penulis</p>
                 </div>
               </PopoverTrigger>
               <PopoverContent>
@@ -96,8 +98,8 @@ const BlogPost = async ({ blogPostData, blogPostRelated }: { blogPostData: Post;
           <div className={`blog__post-content mt-7 text-default-700`}>
             <PortableText value={blogPostData?.body} components={RichText} />
           </div>
-          <div className="blog__post-share mt-7 mb-20">
-            <p className={`text-xl font-semibold mb-5 text-center`}>Jangan Berhenti di Kamu. Yuk Bagikan!</p>
+          <div className="blog__post-share my-20">
+            <p className={`text-xl font-bold mb-5 text-center`}>Jangan Berhenti di Kamu. Yuk Bagikan!</p>
             <div className="sm:flex sm:grid-cols-none grid grid-cols-1 justify-center items-center gap-3">
               <CopyButton textToCopy={messageToCopy} />
               <Link href={`https://wa.me/6281249443118?text=${UrlSlug}`}>
@@ -109,8 +111,8 @@ const BlogPost = async ({ blogPostData, blogPostRelated }: { blogPostData: Post;
           </div>
         </div>
         <div className="another__post">
-          <div className={`sm:text-4xl text-3xl font-semibold`}>
-            Mungkin Kamu Juga Suka. <br /> Lihat Artikel Lainnya
+          <div className={`sm:text-4xl text-3xl font-bold`}>
+            Mungkin Kamu Juga Suka. <br /> <span className="text-primary">Lihat Artikel Lainnya</span>
           </div>
           <div className="related__post-content mt-7 grid sm:grid-cols-2 grid-cols-1 xl:gap-5 md:gap-5 gap-0 mb-10">
             {blogPostRelated.map((post, index) => (

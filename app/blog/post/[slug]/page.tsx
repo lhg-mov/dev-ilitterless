@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation/Navigation";
 import Footer from "@/components/Footer/Footer";
 import BlogPost from "@/components/Blog/BlogPost";
 import { groq } from "next-sanity";
-import { client } from "@/lib/sanity.client";
+import { client, urlFor } from "@/lib/sanity.client";
 
 interface GetSlug {
   slug: string;
@@ -99,6 +99,63 @@ const getRelatedPost = async (params: GetSlug) => {
     throw error;
   }
 };
+
+import type { Metadata, ResolvingMetadata } from "next";
+
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
+  // read route params
+  const slug = params.slug;
+
+  const blogPostData = await getBlogPostDetail({ slug });
+
+  return {
+    title: `iLitterless - ${blogPostData.title}`,
+    description: `${new Date(blogPostData?.publishedAt).toLocaleDateString("id-ID", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+      weekday: "short",
+      timeZone: "UTC",
+    })} - ${new Date(blogPostData?.publishedAt).toLocaleTimeString("id-ID", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "Asia/Jakarta",
+    })}`,
+    other: {
+      "theme-color": "#000000",
+      "color-scheme": "light",
+      "twitter:title": `iLitterless - ${blogPostData.title}`,
+      "twitter:description": `${new Date(blogPostData?.publishedAt).toLocaleDateString("id-ID", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+      weekday: "short",
+      timeZone: "UTC",
+    })} - ${new Date(blogPostData?.publishedAt).toLocaleTimeString("id-ID", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "Asia/Jakarta",
+    })}`,
+      "twitter:image": `${urlFor(blogPostData.mainImage).width(500).url()}`,
+      "twitter:card": "summary_large_image",
+      "og:title": `iLitterless - ${blogPostData.title}`,
+      "og:description": `${new Date(blogPostData?.publishedAt).toLocaleDateString("id-ID", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+      weekday: "short",
+      timeZone: "UTC",
+    })} - ${new Date(blogPostData?.publishedAt).toLocaleTimeString("id-ID", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZone: "Asia/Jakarta",
+    })}`,
+      "og:url": "ilitterlessindonesia.org",
+      "og:image": `${urlFor(blogPostData.mainImage).width(500).url()}`,
+      "og:type": "website",
+    },
+  };
+}
 
 const BlogPostPage = async ({ params }: Props) => {
   const slug = params.slug;

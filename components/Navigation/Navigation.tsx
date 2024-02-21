@@ -8,7 +8,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare, faChevronDown, faCircleCheck, faComment, faComments, faDumpster, faHandshakeSimple, faRecycle, faSchoolCircleCheck, faTrashArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { ThemeSwitcher } from "./ThemeSwitcher";
+
+import { useRouter } from 'next/navigation'
 
 import TransLink from "@/components/TransLink";
 import { getNavigation, getPortfolioLink, getServiceHome } from "@/sanity/actions";
@@ -73,11 +74,6 @@ export default function Navigation() {
       link: "/partner",
     },
     {
-      description: "Kami telah Menjalin Kerja Sama dengan Berbagai Pihak.",
-      title: "Campaign",
-      link: "/waiting",
-    },
-    {
       description: "Kami akan selalu berinovasi untuk mewujudkan minimnya sampah di Indonesia",
       title: "Project",
       link: "/projects",
@@ -98,10 +94,12 @@ export default function Navigation() {
   //     });
   // }, []);
 
+  const router = useRouter()
+
   return (
-    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} maxWidth="xl" className="sm:py-5 py-2 select-none z-30" shouldHideOnScroll isBlurred={false}>
+    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} maxWidth="xl" className="sm:py-5 py-2 select-none z-30 dark:bg-neutral-950" shouldHideOnScroll isBlurred={false}>
       <NavbarContent className="xl:hidden md:flex flex pr-3" justify="start">
-        <NavbarBrand className="w-[105px] h-[30px]" as={Link} href={"https://ilitterlessindonesia.org"}>
+        <NavbarBrand className="w-[105px] h-[30px]" onClick={() => router.push('/home')}>
           <Image src="/ilitterless_black.png" alt="iLitterless Logo" width={150} height={60} className="dark:hidden pointer-events-none" draggable="false" />
 
           <Image src="/ilitterless_white.PNG" alt="iLitterless Logo" width={150} height={60} className="dark:block dark:w-[150px] dark:h-[60px] w-0 h-0 object-contain pointer-events-none" draggable="false" />
@@ -110,10 +108,10 @@ export default function Navigation() {
 
       <NavbarContent className="hidden xl:flex md:hidden gap-7" justify="center">
         <NavbarBrand>
-          <Link href="/">
+          <div onClick={() => router.push('/home')}>
             <Image src="/ilitterless_black.png" alt="iLitterless Logo" width={150} height={60} className="dark:hidden" draggable="false" />
             <Image src="/ilitterless_white.PNG" alt="iLitterless Logo" width={150} height={60} className="dark:block dark:w-[150px] dark:h-[60px] w-0 h-0 object-contain" draggable="false" />
-          </Link>
+          </div>
         </NavbarBrand>
         <NavbarItem className="ml-5">
           <TransLink href="/about" title="Tentang" />
@@ -137,7 +135,7 @@ export default function Navigation() {
               const uid = uuidv4();
               return (
                 <DropdownItem key={uid} className="data-[hover=true]:bg-transparent p-4 m-0">
-                  <TransLink haveDesc={true} desc={service.shortDesc} href={`/services/${service.slug}`} className="hover:text-primary-dark dark:hover:text-primary p-0 m-0" title={service.title} />
+                  <TransLink haveDesc={true} desc={service.shortDesc} href={`/services/${service.slug}`} className="hover:text-primary dark:hover:text-primary p-0 m-0" title={service.title} />
                 </DropdownItem>
               );
             })}
@@ -159,7 +157,7 @@ export default function Navigation() {
               const uid = uuidv4();
               return (
                 <DropdownItem key={uid} className="data-[hover=true]:bg-transparent p-4 m-0">
-                  <TransLink haveDesc={true} desc={portLink.description} href={portLink.link} className="hover:text-primary-dark dark:hover:text-primary p-0 m-0" title={portLink.title} />
+                  <TransLink haveDesc={true} desc={portLink.description} href={portLink.link} className="hover:text-primary dark:hover:text-primary p-0 m-0" title={portLink.title} />
                 </DropdownItem>
               );
             })}
@@ -172,9 +170,6 @@ export default function Navigation() {
 
       <NavbarContent className="xl:flex hidden" justify="end">
         <NavbarItem>
-          <ThemeSwitcher />
-        </NavbarItem>
-        <NavbarItem>
           <Button as={Link} endContent={<FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-4 h-4" />} className={`bg-primary text-white sm:text-md text-sm font-semibold`} href={buttonLink} variant="flat" radius="full">
             {buttonText}
           </Button>
@@ -182,9 +177,6 @@ export default function Navigation() {
       </NavbarContent>
 
       <NavbarContent className="xl:hidden flex" justify="end">
-        <NavbarItem>
-          <ThemeSwitcher />
-        </NavbarItem>
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
       </NavbarContent>
 
@@ -194,12 +186,15 @@ export default function Navigation() {
         </NavbarMenuItem>
         <NavbarMenuItem>
           <Accordion className="!p-0 !m-0">
-            <AccordionItem key="1" aria-label="Accordion 1" title="Produk & Layanan" className="!p-0 !m-0" indicator={<FontAwesomeIcon icon={faChevronDown} className="w-4 h-4 mr-3 mt-5" />}>
+            <AccordionItem key="1" aria-label="Accordion 1" title="Produk & Layanan" className="!p-0 !m-0" indicator={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+</svg>
+}>
               {services.map((service: any) => {
                 const uid = uuidv4();
                 return (
                   <div key={uid} className="px-4 py-2 mb-4">
-                    <TransLink href={`/services/${service.slug}`} className="text-primary-dark dark:text-primary" title={service.title} />
+                    <TransLink href={`/services/${service.slug}`} className="text-primary dark:text-primary" title={service.title} />
                   </div>
                 );
               })}
@@ -211,12 +206,15 @@ export default function Navigation() {
         </NavbarMenuItem>
         <NavbarMenuItem>
           <Accordion className="!p-0 !m-0">
-            <AccordionItem key="1" aria-label="Accordion 1" title="Portofolio" className="!p-0 !m-0" indicator={<FontAwesomeIcon icon={faChevronDown} className="w-4 h-4 mr-3" />}>
+            <AccordionItem key="1" aria-label="Accordion 1" title="Portofolio" className="!p-0 !m-0" indicator={<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+</svg>
+}>
               {portfolioLink.map((portLink: any) => {
                 const uid = uuidv4();
                 return (
                   <div className="px-4 py-2" key={uid}>
-                    <TransLink href={portLink.link} title={portLink.title} className="w-full mb-4 py-2 text-primary-dark dark:text-primary" />
+                    <TransLink href={portLink.link} title={portLink.title} className="w-full mb-4 py-2 text-primary dark:text-primary" />
                   </div>
                 );
               })}

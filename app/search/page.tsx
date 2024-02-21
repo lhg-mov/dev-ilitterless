@@ -55,13 +55,13 @@ const SearchResult = async ({ searchParams }: Props) => {
                           {post?.categories.map((item: any) => (
                             <div key={item._id}>
                               <Link href={{ pathname: `/search?categories=${item?.title}` }} as={`/search?categories=${item?.title}`}>
-                                <div className={`text-sm font-normal text-primary text-start `}>{item?.title}</div>
+                                <div className={`text-sm font-medium text-primary text-start `}>{item?.title}</div>
                               </Link>
                             </div>
                           ))}
                         </div>
                         <Link href={{ pathname: `/blog/post/${post?.slug?.current}` }}>
-                          <h3 className={` text-xl line-clamp-2 font-semibold mt-3 w-11/12`}>{post?.title}</h3>
+                          <h3 className={` text-xl line-clamp-2 font-bold mt-3 w-11/12`}>{post?.title}</h3>
                           <p className={`date__upload text-sm font-normal mt-1 text-default-500 text-start rounded-full `}>
                             {new Date(post?.publishedAt).toLocaleDateString("id-ID", {
                               day: "2-digit",
@@ -82,7 +82,7 @@ const SearchResult = async ({ searchParams }: Props) => {
                       <div className="absolute bottom-0">
                         <div className="flex items-center gap-2 mt-4 group pb-2 text-primary">
                           <Link href={{ pathname: `/blog/post/${post?.slug?.current}` }}>
-                            <div className={`inline-flex items-center border-b-1 border-b-primary gap-2 font-medium `}>
+                            <div className={`inline-flex items-center border-b-1 border-b-primary gap-2 font-semibold `}>
                               Baca Artikel <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-3 h-3" />
                             </div>
                           </Link>

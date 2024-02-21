@@ -9,12 +9,13 @@ import { Image } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faLinkedin, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { ThemeSwitcher } from "../Navigation/ThemeSwitcher";
 
 const Footer = () => {
   return (
     <div className="border-t-[1px] border-default-500">
       <div className={style.footer}>
-        <div className="sm:flex sm:flex-wrap grid grid-cols-1 items-center gap-16 pt-8 mb-16">
+        <div className="sm:flex sm:flex-wrap grid grid-cols-1 items-top gap-16 pt-8 mb-16">
           <div className="footer__title basis-4/12">
             <Image src="/ilitterless_black.png" alt="iLitterless Logo" width={150} height={60} className="dark:hidden pointer-events-none block" draggable="false" />
             <Image src="/ilitterless_white.PNG" alt="iLitterless Logo" width={150} height={60} className="dark:block hidden dark:w-[150px] dark:h-[60px] w-0 h-0 object-contain pointer-events-none" draggable="false" />
@@ -33,6 +34,9 @@ const Footer = () => {
               <Link href="https://wa.me/6281369517434">
                 <FontAwesomeIcon icon={faWhatsapp} className="w-5 h-5" />
               </Link>
+            </div>
+            <div className="version_id mt-5">
+            <Version />
             </div>
           </div>
           <div className="footer__link sm:grow">
@@ -62,19 +66,16 @@ const Footer = () => {
             <div className="footer__link_header font-semibold">Registrasi</div>
             <ul className="space-y-2 text-default-500 mt-4">
               <li>
-                <Link href={`/waiting`}>Daftar i-Cos</Link>
+                <Link href={`/waiting`}>i-Cos</Link>
               </li>
               <li>
-                <Link href={`/waiting`}>Daftar MOBI-RS</Link>
+                <Link href={`/waiting`}>PML</Link>
               </li>
               <li>
-                <Link href={`/waiting`}>Daftar PML</Link>
+                <Link href={`/waiting`}>Goes to School</Link>
               </li>
               <li>
-                <Link href={`/waiting`}>Daftar Goes to School</Link>
-              </li>
-              <li>
-                <Link href={`/waiting`}>Menjadi Mitra Kami</Link>
+                <Link href={`/waiting`}>Kolaborasi</Link>
               </li>
             </ul>
           </div>
@@ -102,8 +103,9 @@ const Footer = () => {
         <div className="footer__bottom border-t-[1px] border-default-300 pt-10">
           <div className="sm:flex sm:justify-between items-center">
             <div className="text-default-500">© 2024 iLitterless Indonesia, All Rights Reserved.</div>
-            <div className="developer sm:mt-0 mt-3">
-              <Version />
+            <div className="flex gap-2 sm:mt-0 mt-3">
+              <div className="text-default-500 text-sm">Theme</div>
+              <ThemeSwitcher/>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      {/* <Intro /> */}
+      <Intro />
       <StatsClient />
       <LayananClient />
       <ProjectClient />
@@ -24,6 +24,8 @@ export default function Home() {
       <CallToAction />
       <Footer />
       <ParentAnnouncement />
+      
+      
     </>
   );
 }
