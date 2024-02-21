@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+[data-theme="dark"],
+[data-theme="dark"] body {
+  background: #7a7a7a;
+}
+
+html {
+  font-family: var(--font-montserrat);
+  scroll-behavior: smooth;
+}
+
+.container {
+  @apply sm:max-w-screen-xl mx-auto px-5;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes uptodown {
+  0% {
+    transform: translateY(0px);
+  }
+  25% {
+    transform: translateY(5px);
+  }
+  75% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+.animate-updown {
+  animation: uptodown 5s linear infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+/* Marquee Logo */
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slideR {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 20px 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.logos:before,
+.logos:after {
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos:hover .logos-slide-re {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  animation: 80s slide infinite linear;
+}
+
+.logos-slide-re {
+  animation: 80s slideR infinite linear;
+}
+
+.logos-slide-re .logo-content {
+  height: 50px;
+  margin: 0 20px;
+  object-fit: contain;
+}
+
+.logos-slide .logo-content {
+  height: 50px;
+  margin: 0 20px;
+  object-fit: contain;
+}
+
+.polkadot {
+  background-color: transparent;
+  opacity: 1;
+  background-image: radial-gradient(#000000 0.75px, #ffffff 0.75px);
+  background-size: 15px 15px;
+}
+
+.polkadotdark {
+  background-color: transparent;
+  opacity: 1;
+  background-image: radial-gradient(#f0f0f0 0.75px, #000000 0.75px);
+  background-size: 15px 15px;
+}

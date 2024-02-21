@@ -1,0 +1,63 @@
+.body {
+  font-family: var(--font-montserrat);
+}
+
+.intro {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+}
+
+.calltoaction {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+}
+
+.footer {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+}
+
+.stats {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-5 mt-8;
+}
+
+.service {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+}
+
+.project {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-16;
+}
+
+.partner {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+}
+
+.blog {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+}
+
+.about {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+}
+
+.servicepage {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+}
+
+.projectpage {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+}
+
+.partnerpage {
+  @apply sm:max-w-screen-xl mx-auto px-5 pb-10;
+}
+
+.contactpage {
+  @apply sm:max-w-screen-xl mx-auto px-5 pb-10;
+}
+
+.blogpost {
+  @apply sm:max-w-screen-md mx-auto px-5 py-10;
+}
+
+.waiting {
+  @apply sm:max-w-screen-xl mx-auto px-5 py-10;
+}
