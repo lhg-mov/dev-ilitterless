@@ -52,8 +52,8 @@ const ContactPage = () => {
                 </Link>
               </div>
             </div>
-            <form action="https://formsubmit.co/ilitterlessindonesia.dev@gmail.com" method="POST" className="form sm:mt-0 mt-8">
-            <input type="hidden" name="_next" value="https://ilitterlessindonesia.org/waiting"/>
+            <form action="https://formsubmit.co/5e77cb3f6622cf08e327ea99281fd31c" method="POST" className="form sm:mt-0 mt-8">
+            <input type="hidden" name="_next" value="https://staging-ilitterless.vercel.app/waiting"/>
               <Input size="lg" type="email" label="Email" name="Email" variant="underlined" isRequired />
               <Input size="lg" type="tel" label="Phone Number" name="Phone Number" variant="underlined" isRequired />
               <Input size="lg" type="text" label="Subject" name="Subject" variant="underlined" isRequired />
