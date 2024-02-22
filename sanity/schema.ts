@@ -16,7 +16,8 @@ import about from "./schemas/about";
 import aboutTimeline from "./schemas/aboutTimeline";
 import introImage from "./schemas/introImage";
 import fastButton from "./schemas/fastButton";
+import contact from "./schemas/contact";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [fastButton, portfolioLink, intro, introImage, statistik, about, aboutTimeline, productServices, projects, partnerBrand, partnerCafe, post, author, category, blockContent],
+  types: [fastButton, portfolioLink, intro, introImage, statistik, about, aboutTimeline, productServices, projects, partnerBrand, partnerCafe, post, author, category, blockContent, contact],
 };
