@@ -1,8 +1,8 @@
 import { defineField, defineType } from "sanity";
 
 export default defineType({
-  name: "navigation",
-  title: "Navigation",
+  name: "fastButton",
+  title: "Fast Button",
   type: "document",
   fields: [
     defineField({

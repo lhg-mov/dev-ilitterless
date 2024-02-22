@@ -1,7 +1,7 @@
 import CallToAction from "@/components/CallToAction/CallToAction";
 import Footer from "@/components/Footer/Footer";
 import Navigation from "@/components/Navigation/Navigation";
-import { getPartnerBrand, getPartnerCafe } from "@/sanity/actions";
+import { getPartnerData } from "@/sanity/actions";
 import React from "react";
 
 import style from "@/app/ilitterless.module.css";
@@ -13,8 +13,9 @@ import { Link, Image } from "@nextui-org/react";
 import { v4 as uuidv4 } from "uuid";
 
 const PartnerPage = async () => {
-  const renderBrand = await getPartnerBrand();
-  const renderCafe = await getPartnerCafe();
+  const render = await getPartnerData();
+  const renderBrand = render.partnerBrand;
+  const renderCafe = render.partnerCafe;
   return (
     <>
       <Navigation />

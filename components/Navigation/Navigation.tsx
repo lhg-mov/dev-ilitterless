@@ -11,8 +11,10 @@ import { faArrowUpRightFromSquare, faChevronDown, faCircleCheck, faComment, faCo
 
 import { useRouter } from 'next/navigation'
 
+import { usePathname } from 'next/navigation'
+
 import TransLink from "@/components/TransLink";
-import { getNavigation, getPortfolioLink, getServiceHome } from "@/sanity/actions";
+import { getNavLinkData } from "@/sanity/actions";
 
 // Tentukan tipe data untuk respons dari getServiceHome
 interface ServiceData {
@@ -40,45 +42,28 @@ import { v4 as uuidv4 } from "uuid";
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  // Solusi Sementara dikarenakan jika dilakukan Fetch Data terjadi Error Pada seluruh komponen Navigasi
-  const buttonText = "Daftar i-Cos";
-  const buttonLink = "/waiting";
+  const [services, setServices] = useState<ServiceData[]>([]);
+  const [portfolioLink, setPortfolioLink] = useState<PortfolioLinkData[]>([]);
+  const [button, setButtonData] = useState<{ buttonText: string, buttonLink: string }>({ buttonText: 'Loading', buttonLink: '' });
 
-  const services = [
-    {
-      shortDesc: "Sebuah program inisiatif untuk mengatasi masalah sampah dan meningkatkan kebersihan lingkungan di Indonesia.",
-      title: "Pick Up My Litter",
-      slug: "pml",
-    },
-    {
-      shortDesc: "Program Mini Onboarding of iLitterless Recycling Station adalah inisiatif untuk menempatkan stasiun daur ulang mini di lokasi strategis seperti pusat perbelanjaan atau tempat umum lainnya.",
-      title: "Mini on Boarding of Ilitterless Recycling Station",
-      slug: "mobi-rs",
-    },
-    {
-      shortDesc: "Integrated Circular Waste Management System adalah pendekatan holistik dalam mengelola limbah yang memanfaatkan prinsip ekonomi sirkular.",
-      title: "Integrated Circular Waste Management System",
-      slug: "i-cos",
-    },
-    {
-      shortDesc: "Program iLitterless Goes to Schools and Universities merupakan inisiatif iLitterless Indonesia untuk meningkatkan kesadaran lingkungan di kalangan siswa dan mahasiswa.",
-      title: "iLitterless Goes To School and Universities",
-      slug: "goes-to-school",
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await getNavLinkData();
+        const dataset = response.fastButton;
+        const services = response.serviceLink;
+        const portfolioLink = response.portLink;
+        setButtonData({ buttonText: dataset.buttonText, buttonLink: dataset.buttonLink });
+        setServices(services); // Mengambil data services
+        setPortfolioLink(portfolioLink); // Mengambil data portfolioLink
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData();
+  }, []);
 
-  const portfolioLink = [
-    {
-      description: "Menjadi Bagian Dalam Mengurangi Sampah di Indonesia",
-      title: "Mitra Kami",
-      link: "/partner",
-    },
-    {
-      description: "Kami akan selalu berinovasi untuk mewujudkan minimnya sampah di Indonesia",
-      title: "Project",
-      link: "/projects",
-    },
-  ];
+  const pathname = usePathname()
 
   // const [services, setServices] = useState<ServiceData[]>([]);
   // const [portfolioLink, setPortfolioLink] = useState<PortfolioLinkData[]>([]);
@@ -99,7 +84,7 @@ export default function Navigation() {
   return (
     <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} maxWidth="xl" className="sm:py-5 py-2 select-none z-30 dark:bg-neutral-950" shouldHideOnScroll isBlurred={false}>
       <NavbarContent className="xl:hidden md:flex flex pr-3" justify="start">
-        <NavbarBrand className="w-[105px] h-[30px]" onClick={() => router.push('/home')}>
+        <NavbarBrand className={`w-[105px] h-[30px] ${pathname === '/home' ? 'disable-link': ''} ${pathname === '/' ? 'disable-link': ''}`} as={Link} href="/home" >
           <Image src="/ilitterless_black.png" alt="iLitterless Logo" width={150} height={60} className="dark:hidden pointer-events-none" draggable="false" />
 
           <Image src="/ilitterless_white.PNG" alt="iLitterless Logo" width={150} height={60} className="dark:block dark:w-[150px] dark:h-[60px] w-0 h-0 object-contain pointer-events-none" draggable="false" />
@@ -107,14 +92,14 @@ export default function Navigation() {
       </NavbarContent>
 
       <NavbarContent className="hidden xl:flex md:hidden gap-7" justify="center">
-        <NavbarBrand>
-          <div onClick={() => router.push('/home')}>
+        <NavbarBrand as={Link} href="/home" className={`${pathname === '/home' ? 'disable-link': ''} ${pathname === '/' ? 'disable-link': ''}`}>
+
             <Image src="/ilitterless_black.png" alt="iLitterless Logo" width={150} height={60} className="dark:hidden" draggable="false" />
             <Image src="/ilitterless_white.PNG" alt="iLitterless Logo" width={150} height={60} className="dark:block dark:w-[150px] dark:h-[60px] w-0 h-0 object-contain" draggable="false" />
-          </div>
+
         </NavbarBrand>
         <NavbarItem className="ml-5">
-          <TransLink href="/about" title="Tentang" />
+          <TransLink href="/about" title="Tentang" className={`${pathname === '/about' ? 'disable-link': ''}`} />
         </NavbarItem>
         <Dropdown className="shadow-md">
           <NavbarItem>
@@ -135,14 +120,14 @@ export default function Navigation() {
               const uid = uuidv4();
               return (
                 <DropdownItem key={uid} className="data-[hover=true]:bg-transparent p-4 m-0">
-                  <TransLink haveDesc={true} desc={service.shortDesc} href={`/services/${service.slug}`} className="hover:text-primary dark:hover:text-primary p-0 m-0" title={service.title} />
+                  <TransLink haveDesc={true} desc={service.shortDesc} href={`/services/${service.slug}`} title={service.title} className={`${pathname === `/services/${service.slug}` ? 'disable-link': ''} hover:text-primary dark:hover:text-primary p-0 m-0`}/>
                 </DropdownItem>
               );
             })}
           </DropdownMenu>
         </Dropdown>
         <NavbarItem>
-          <TransLink href="/blog" title="Blog" />
+          <TransLink href="/blog" title="Blog" className={`${pathname === '/blog' ? 'disable-link': ''}`} />
         </NavbarItem>
         <Dropdown className="shadow-md">
           <NavbarItem>
@@ -157,21 +142,21 @@ export default function Navigation() {
               const uid = uuidv4();
               return (
                 <DropdownItem key={uid} className="data-[hover=true]:bg-transparent p-4 m-0">
-                  <TransLink haveDesc={true} desc={portLink.description} href={portLink.link} className="hover:text-primary dark:hover:text-primary p-0 m-0" title={portLink.title} />
+                  <TransLink haveDesc={true} desc={portLink.description} href={portLink.link} className={`hover:text-primary dark:hover:text-primary p-0 m-0 ${pathname === `{portLink.link}` ? 'disable-link' : ''}`} title={portLink.title} />
                 </DropdownItem>
               );
             })}
           </DropdownMenu>
         </Dropdown>
         <NavbarItem>
-          <TransLink href="/contact" title="Kontak" />
+          <TransLink href="/contact" title="Kontak" className={`${pathname === '/contact' ? 'disable-link': ''}`}/>
         </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="xl:flex hidden" justify="end">
         <NavbarItem>
-          <Button as={Link} endContent={<FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-4 h-4" />} className={`bg-primary text-white sm:text-md text-sm font-semibold`} href={buttonLink} variant="flat" radius="full">
-            {buttonText}
+          <Button as={Link} endContent={<FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-4 h-4" />} className={`bg-primary text-white sm:text-md text-sm font-semibold`} href={button.buttonLink} variant="flat" radius="full">
+            {button.buttonText}
           </Button>
         </NavbarItem>
       </NavbarContent>
@@ -182,7 +167,7 @@ export default function Navigation() {
 
       <NavbarMenu>
         <NavbarMenuItem className="pt-10">
-          <TransLink href="/about" title="Tentang" className=" w-full" />
+          <TransLink href="/about" title="Tentang" className={`w-full ${pathname === '/about' ? 'disable-link': ''}`} />
         </NavbarMenuItem>
         <NavbarMenuItem>
           <Accordion className="!p-0 !m-0">
@@ -194,7 +179,7 @@ export default function Navigation() {
                 const uid = uuidv4();
                 return (
                   <div key={uid} className="px-4 py-2 mb-4">
-                    <TransLink href={`/services/${service.slug}`} className="text-primary dark:text-primary" title={service.title} />
+                    <TransLink href={`/services/${service.slug}`} className={`${pathname === `/services/${service.slug}` ? 'disable-link': ''} text-primary dark:text-primary`} title={service.title} />
                   </div>
                 );
               })}
@@ -202,7 +187,7 @@ export default function Navigation() {
           </Accordion>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <TransLink href="/blog" title="Blog" className=" w-full" />
+          <TransLink href="/blog" title="Blog" className={`${pathname === '/blog' ? 'disable-link': ''} w-full`} />
         </NavbarMenuItem>
         <NavbarMenuItem>
           <Accordion className="!p-0 !m-0">
@@ -214,7 +199,7 @@ export default function Navigation() {
                 const uid = uuidv4();
                 return (
                   <div className="px-4 py-2" key={uid}>
-                    <TransLink href={portLink.link} title={portLink.title} className="w-full mb-4 py-2 text-primary dark:text-primary" />
+                    <TransLink href={portLink.link} title={portLink.title} className={`${pathname === `{portLink.link}` ? 'disable-link': ''}w-full mb-4 py-2 text-primary dark:text-primary`} />
                   </div>
                 );
               })}
@@ -222,11 +207,11 @@ export default function Navigation() {
           </Accordion>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <TransLink href="/contact" title="Kontak" className=" w-full" />
+          <TransLink href="/contact" title="Kontak" className={`w-full ${pathname === '/contact' ? 'disable-link': ''}`} />
         </NavbarMenuItem>
         <NavbarMenuItem className="py-10">
-          <Button as={Link} endContent={<FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-4 h-4" />} className={`bg-primary w-full text-white sm:text-md text-sm font-semibold`} href={buttonLink} variant="flat" radius="full">
-            {buttonText}
+          <Button as={Link} endContent={<FontAwesomeIcon icon={faArrowUpRightFromSquare} className="w-4 h-4" />} className={`bg-primary w-full text-white sm:text-md text-sm font-semibold`} href={button.buttonLink} variant="flat" radius="full">
+            {button.buttonText}
           </Button>
         </NavbarMenuItem>
       </NavbarMenu>

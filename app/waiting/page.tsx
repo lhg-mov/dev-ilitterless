@@ -8,9 +8,8 @@ import Version from "@/components/Version";
 
 const Waiting = () => {
   return (
-    <div className="bg-default-100/75">
       <div className={style.waiting}>
-        <div className="flex justify-start items-center py-52 text-default-700">
+        <div className="flex justify-start items-center py-44 text-default-700">
           <div className="waiting__content">
             <Image src="/ilitterless_black.png" alt="iLitterless Logo" width={150} height={60} className="dark:hidden pointer-events-none" draggable="false" />
             <Image src="/ilitterless_white.PNG" alt="iLitterless Logo" width={150} height={60} className="dark:block dark:w-[150px] dark:h-[60px] w-0 h-0 object-contain pointer-events-none" draggable="false" />
@@ -40,7 +39,6 @@ const Waiting = () => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

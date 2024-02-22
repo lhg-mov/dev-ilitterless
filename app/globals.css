@@ -65,6 +65,10 @@ html {
   animation: wiggle 2s ease-in-out infinite;
 }
 
+.disable-link {
+  @apply pointer-events-none;
+}
+
 /* Marquee Logo */
 
 @keyframes slide {

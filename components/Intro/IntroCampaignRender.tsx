@@ -1,37 +1,24 @@
 import React from "react";
 
 import Image from "next/image";
-import { getIntroCampaign } from "@/sanity/actions";
+import { getIntroData } from "@/sanity/actions";
 
 type Campaign = {
   campaignTitle: string;
-  campaignFieldIconOne: {
-    asset: {
-      url: string;
-    };
-  };
+
   campaignFieldTitleOne: string;
   campaignFieldDescOne: string;
 
-  campaignFieldIconTwo: {
-    asset: {
-      url: string;
-    };
-  };
   campaignFieldTitleTwo: string;
   campaignFieldDescTwo: string;
 
-  campaignFieldIconThree: {
-    asset: {
-      url: string;
-    };
-  };
   campaignFieldTitleThree: string;
   campaignFieldDescThree: string;
 };
 
 const IntroCampaignRender = async () => {
-  const campaign: Campaign = await getIntroCampaign();
+  const render = await getIntroData();
+  const campaign:Campaign = render.introTitleCampaign;
   return (
     <div className="intro_campaign">
       <div className="sm:text-4xl text-2xl font-extrabold text-primary">{campaign.campaignTitle}</div>

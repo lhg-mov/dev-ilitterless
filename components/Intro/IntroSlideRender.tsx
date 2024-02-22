@@ -7,7 +7,7 @@ import ButtonUI from "../ui/ButtonUI";
 
 import Image from "next/image";
 
-import { getIntro, getIntroCampaign, getIntroCollab, getIntroSlide } from "@/sanity/actions";
+import { getIntroData } from "@/sanity/actions";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -20,7 +20,8 @@ type Slide = {
 };
 
 const IntroSlideRender = async () => {
-  const slide: Slide = await getIntroSlide();
+  const render = await getIntroData();
+  const slide:Slide = render.introSlide;
   return (
     
     <Image src={slide.image.asset.url} alt="Intro image" width={280} height={560} className="w-[280px] h-[560px] object-contain object-center drop-shadow-xl animate-updown z-10 overflow-hidden" priority={true} />

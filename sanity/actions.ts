@@ -41,18 +41,36 @@ export const getPostQuery = async (params: GetPostQueryParams) => {
   }
 };
 
-export const getNavigation = async () => {
+export const getNavLinkData = async () => {
   try {
     const navQuery = await client.fetch(
-      groq`*[_type == "navigation"][0]{
+      groq`{
+      "fastButton": *[_type == "fastButton"][0]{
         buttonText,
         buttonLink,
-      }`
+      },
+      "portLink": *[_type == "portfolioLink"] | order(_createdAt asc)[0...3]{
+        _id,
+        title,
+          link,
+          description,
+        },
+        "serviceLink": *[_type == "productServices"] | order(_createdAt asc)[0...4]{
+          _id,
+          title,
+          shortDesc,
+          "slug": slug.current,
+        }
+    }`
     );
 
-    return navQuery;
+    const { fastButton, portLink, serviceLink } = navQuery;
+
+    return {
+      fastButton, portLink, serviceLink
+    };
   } catch (error) {
-    console.error("Error fetching Nav Button query! --> ", error);
+    console.error("Error fetching Nav Link query! --> ", error);
     throw error;
   }
 };
@@ -60,12 +78,7 @@ export const getNavigation = async () => {
 export const getPortfolioLink = async () => {
   try {
     const portfolioLinkQuery = await client.fetch(
-      groq`*[_type == "portfolioLink"] | order(_createdAt asc)[0...3]{
-        _id,
-        title,
-          link,
-          description,
-        }`
+      groq``
     );
 
     return portfolioLinkQuery;
@@ -75,10 +88,11 @@ export const getPortfolioLink = async () => {
   }
 };
 
-export const getIntro = async () => {
+export const getIntroData = async () => {
   try {
     const introQuery = await client.fetch(
-      groq`*[_type == "intro"][0]{
+      groq`{
+        "introTitleCampaign": *[_type == "intro"][0]{
         _id,
         _updatedAt,
         _createdAt,
@@ -86,95 +100,116 @@ export const getIntro = async () => {
         hastag,
         buttonText,
         buttonLink,
-      }`
+        campaignTitle,
+        campaignFieldTitleOne,
+        campaignFieldDescOne,
+        campaignFieldTitleTwo,
+        campaignFieldDescTwo,
+        campaignFieldTitleThree,
+        campaignFieldDescThree,
+      },
+      
+      "introSlide": *[_type == "introImage"][0]{
+        image {
+          asset->{
+            url
+          }
+        },
+      }
+    }
+      `
     );
 
-    return introQuery;
+    const { introTitleCampaign, introSlide } = introQuery;
+
+    return {
+      introTitleCampaign, introSlide,
+    };
   } catch (error) {
     console.error("Error fetching Intro query! --> ", error);
     throw error;
   }
 };
 
-export const getIntroCollab = async () => {
-  try {
-    const introCollabQuery = await client.fetch(
-      groq`*[_type == "intro"][0]{
-        collabStatus,
-        collabLogoLight {
-          asset->{
-            url
-          }
-        },
-        collabLogoDark {
-          asset->{
-            url
-          }
-        },
-      }`
-    );
+// export const getIntroCollab = async () => {
+//   try {
+//     const introCollabQuery = await client.fetch(
+//       groq`*[_type == "intro"][0]{
+//         collabStatus,
+//         collabLogoLight {
+//           asset->{
+//             url
+//           }
+//         },
+//         collabLogoDark {
+//           asset->{
+//             url
+//           }
+//         },
+//       }`
+//     );
 
-    return introCollabQuery;
-  } catch (error) {
-    console.error("Error fetching Intro Collaboration query! --> ", error);
-    throw error;
-  }
-};
+//     return introCollabQuery;
+//   } catch (error) {
+//     console.error("Error fetching Intro Collaboration query! --> ", error);
+//     throw error;
+//   }
+// };
 
-export const getIntroSlide = async () => {
-  try {
-    const introSlideQuery = await client.fetch(
-      groq`*[_type == "introImage"][0]{
-        image {
-          asset->{
-            url
-          }
-        },
-      }`
-    );
+// export const getIntroSlide = async () => {
+//   try {
+//     const introSlideQuery = await client.fetch(
+//       groq`*[_type == "introImage"][0]{
+//         image {
+//           asset->{
+//             url
+//           }
+//         },
+//       }`
+//     );
 
-    return introSlideQuery;
-  } catch (error) {
-    console.error("Error fetching Intro Slide query! --> ", error);
-    throw error;
-  }
-};
+//     return introSlideQuery;
+//   } catch (error) {
+//     console.error("Error fetching Intro Slide query! --> ", error);
+//     throw error;
+//   }
+// };
 
-export const getIntroCampaign = async () => {
-  try {
-    const introCampaignQuery = await client.fetch(
-      groq`*[_type == "intro"][0]{
-        campaignTitle,
-        campaignFieldIconOne {
-          asset->{
-            url
-          }
-        },
-        campaignFieldTitleOne,
-        campaignFieldDescOne,
-        campaignFieldIconTwo {
-          asset->{
-            url
-          }
-        },
-        campaignFieldTitleTwo,
-        campaignFieldDescTwo,
-        campaignFieldIconThree {
-          asset->{
-            url
-          }
-        },
-        campaignFieldTitleThree,
-        campaignFieldDescThree,
-      }`
-    );
+// export const getIntroCampaign = async () => {
+//   try {
+//     const introCampaignQuery = await client.fetch(
+//       groq`*[_type == "intro"][0]{
+//         campaignTitle,
+//         campaignFieldIconOne {
+//           asset->{
+//             url
+//           }
+//         },
+//         campaignFieldTitleOne,
+//         campaignFieldDescOne,
+//         campaignFieldIconTwo {
+//           asset->{
+//             url
+//           }
+//         },
+//         campaignFieldTitleTwo,
+//         campaignFieldDescTwo,
+//         campaignFieldIconThree {
+//           asset->{
+//             url
+//           }
+//         },
+//         campaignFieldTitleThree,
+//         campaignFieldDescThree,
+//       }`
+//     );
 
-    return introCampaignQuery;
-  } catch (error) {
-    console.error("Error fetching Intro Campaign query! --> ", error);
-    throw error;
-  }
-};
+//     return introCampaignQuery;
+//   } catch (error) {
+//     console.error("Error fetching Intro Campaign query! --> ", error);
+//     throw error;
+//   }
+// };
 
 export const getStats = async () => {
   try {
@@ -310,49 +345,57 @@ export const getProjectHome = async () => {
   }
 };
 
-export const getPartnerBrand = async () => {
+export const getPartnerData = async () => {
   try {
-    const partnerBrandQuery = await client.fetch(
-      groq`*[_type == "partnerBrand"] | order(_createdAt desc){
-        title,
-          link,
-          logoImage {
-          alt,
-            asset->{
-            url,
-            }
-          }
-  }`
+    const partnerQuery = await client.fetch(
+      groq`{
+        "partnerBrand": *[_type == "partnerBrand"] | order(_createdAt desc){
+          title,
+            link,
+            logoImage {
+            alt,
+              asset->{
+              url,
+            }  
+            }       
+          },
+          "partnerCafe": *[_type == "partnerCafe"] | order(_createdAt asc){
+            title,
+              link,
+              logoImage {
+              alt,
+                asset->{
+                url,
+                }
+              }
+      }
+
+      }`
     );
 
-    return partnerBrandQuery;
+    const { partnerBrand, partnerCafe } = partnerQuery;
+
+    return {
+      partnerBrand, partnerCafe,
+    };
   } catch (error) {
-    console.error("Error fetching Partner Brand query! --> ", error);
+    console.error("Error fetching Partner query! --> ", error);
     throw error;
   }
 };
 
-export const getPartnerCafe = async () => {
-  try {
-    const partnerCafeQuery = await client.fetch(
-      groq`*[_type == "partnerCafe"] | order(_createdAt asc){
-        title,
-          link,
-          logoImage {
-          alt,
-            asset->{
-            url,
-            }
-          }
-  }`
-    );
+// export const getPartnerCafe = async () => {
+//   try {
+//     const partnerCafeQuery = await client.fetch(
+//       groq``
+//     );
 
-    return partnerCafeQuery;
-  } catch (error) {
-    console.error("Error fetching Partner Cafe query! --> ", error);
-    throw error;
-  }
-};
+//     return partnerCafeQuery;
+//   } catch (error) {
+//     console.error("Error fetching Partner Cafe query! --> ", error);
+//     throw error;
+//   }
+// };
 
 export const getAboutPage = async () => {
   try {

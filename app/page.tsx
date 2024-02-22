@@ -24,8 +24,6 @@ export default function Home() {
       <CallToAction />
       <Footer />
       <ParentAnnouncement />
-      
-      
     </>
   );
 }

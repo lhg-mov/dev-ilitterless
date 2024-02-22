@@ -52,7 +52,8 @@ const ContactPage = () => {
                 </Link>
               </div>
             </div>
-            <form className="form sm:mt-0 mt-8">
+            <form action="https://formsubmit.co/ilitterlessindonesia.dev@gmail.com" method="POST" className="form sm:mt-0 mt-8">
+            <input type="hidden" name="_next" value="https://ilitterlessindonesia.org/waiting"/>
               <Input size="lg" type="email" label="Email" name="Email" variant="underlined" isRequired />
               <Input size="lg" type="tel" label="Phone Number" name="Phone Number" variant="underlined" isRequired />
               <Input size="lg" type="text" label="Subject" name="Subject" variant="underlined" isRequired />
@@ -70,6 +71,7 @@ const ContactPage = () => {
               >
                 Send Message
               </Button>
+              <div className="mt-5 text-tiny text-default-400">*All data you send, will be sent directly to our email. Provided by. Form Submit</div>
             </form>
           </div>
         </div>

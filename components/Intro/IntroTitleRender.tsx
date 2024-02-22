@@ -1,5 +1,5 @@
 import React from "react";
-import { getIntro, getIntroCollab } from "@/sanity/actions";
+import { getIntroData } from "@/sanity/actions";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
@@ -30,18 +30,18 @@ type Collab = {
 };
 
 const IntroTitleRender = async () => {
-  const renderTitle: Title = await getIntro();
-  // const renderCollab: Collab = await getIntroCollab();
+  const render = await getIntroData();
+  const title:Title = render.introTitleCampaign;
   return (
     <div className="intro_title__area">
       <div className="sm:text-6xl text-5xl font-black sm:text-nowrap uppercase sm:text-end text-start">
-        {renderTitle.tagline.slice(0, 6)} <span className="text-primary">{renderTitle.tagline.slice(6, 9)}</span>
-        {renderTitle.tagline.slice(9, 11)} <br /> <span className="text-primary">{renderTitle.tagline.slice(11, 14)}</span>
-        {renderTitle.tagline.slice(14, 22)}
+        {title.tagline.slice(0, 6)} <span className="text-primary">{title.tagline.slice(6, 9)}</span>
+        {title.tagline.slice(9, 11)} <br /> <span className="text-primary">{title.tagline.slice(11, 14)}</span>
+        {title.tagline.slice(14, 22)}
       </div>
 
-      <div className="hastag text-xl mt-4 text-default-500 mb-7 sm:text-end text-start">{renderTitle.hastag}</div>
-      <div className="flex sm:justify-end justify-start"><ButtonUI endContent={<FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />} link={renderTitle.buttonLink} text={renderTitle.buttonText}/></div>
+      <div className="hastag text-xl mt-4 text-default-500 mb-7 sm:text-end text-start">{title.hastag}</div>
+      <div className="flex sm:justify-end justify-start"><ButtonUI endContent={<FontAwesomeIcon icon={faArrowRight} className="w-5 h-5" />} link={title.buttonLink} text={title.buttonText}/></div>
       
 
       {/* <div className="ilitterless__collab mt-10">

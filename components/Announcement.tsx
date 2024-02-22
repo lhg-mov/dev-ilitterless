@@ -30,11 +30,11 @@ const Announcement = () => {
             transition={{ duration: 0.5, type: "ease out" }}
             className="fixed z-[9999] xl:bottom-8 xl:right-8 md:bottom-6 md:right-6 bottom-4 sm:px-5 px-5"
           >
-            <div className="bg-danger-100 shadow-lg border-1 border-danger-200 rounded-xl pt-5 pb-5 px-5 max-w-[32rem]">
+            <div className="bg-red-100 shadow-lg border-1 border-red-200 rounded-xl pt-5 pb-5 px-5 max-w-[32rem]">
               <div className="flex justify-between items-center mb-1">
-                <div className={`text-lg text-danger-500 font-bold`}>Disclaimer</div>
-                <div onClick={() => setIsVisible(false)} className="text-danger-500 cursor-pointer group">
-                  <FontAwesomeIcon icon={faTimes} className="w-4 h-4 bg-transparent backdrop-blur-xl p-1 rounded-full group-hover:bg-white group-hover:text-danger-500 transition-all duration-250 group-hover:scale-105" />
+                <div className={`text-lg text-red-500 font-bold`}>Disclaimer</div>
+                <div onClick={() => setIsVisible(false)} className="text-red-500 cursor-pointer group">
+                  <FontAwesomeIcon icon={faTimes} className="w-4 h-4 bg-transparent backdrop-blur-xl p-1 rounded-full group-hover:bg-white group-hover:text-red-500 transition-all duration-250 group-hover:scale-105" />
                 </div>
               </div>
 
