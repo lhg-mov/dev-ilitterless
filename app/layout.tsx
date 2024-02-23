@@ -22,13 +22,13 @@ export const metadata: Metadata = {
     "twitter:title": "iLitterless Indonesia - #PilahSampahItuMudah",
     "twitter:description":
       "iLitterless Indonesia, sebuah Organisasi Non-Pemerintah (NGO) yang beroperasi di bawah naungan Yayasan Insan Lestari Indonesia (YILI), didirikan pada tahun 2021 dengan basis di Kota Malang, Jawa Timur, Indonesia. Nama 'iLitterless' diambil dari bahasa Inggris, terdiri dari kata 'i' (saya) dan 'Litter less' (minim sampah), yang secara harfiah diterjemahkan sebagai 'Saya Minim Sampah' dalam bahasa Indonesia.",
-    "twitter:image": "https://ilitterlessindonesia.org/open-graph.png",
+    "twitter:image": "https://staging-ilitterless.vercel.app/open-graph.png",
     "twitter:card": "summary_large_image",
     "og:title": "iLitterless Indonesia - #PilahSampahItuMudah",
     "og:description":
       "iLitterless Indonesia, sebuah Organisasi Non-Pemerintah (NGO) yang beroperasi di bawah naungan Yayasan Insan Lestari Indonesia (YILI), didirikan pada tahun 2021 dengan basis di Kota Malang, Jawa Timur, Indonesia. Nama 'iLitterless' diambil dari bahasa Inggris, terdiri dari kata 'i' (saya) dan 'Litter less' (minim sampah), yang secara harfiah diterjemahkan sebagai 'Saya Minim Sampah' dalam bahasa Indonesia.",
-    "og:url": "ilitterlessindonesia.org",
-    "og:image": "https://ilitterlessindonesia.org/open-graph.png",
+    "og:url": "staging-ilitterless.vercel.app",
+    "og:image": "https://staging-ilitterless.vercel.app/open-graph.png",
     "og:type": "website",
   },
 };
