@@ -6,7 +6,7 @@ import Navigation from "@/components/Navigation/Navigation";
 import LayananClient from "@/components/Service/LayananClient";
 import ProjectClient from "@/components/Project/ProjectClient";
 import Mitra from "@/components/Mitra/Mitra";
-import NewBlogClient from "@/components/NewBlog/NewBlogClient";
+import NewBlog from "@/components/NewBlog/NewBlog";
 import CallToAction from "@/components/CallToAction/CallToAction";
 import Footer from "@/components/Footer/Footer";
 import ParentAnnouncement from "@/components/ParentAnnouncement";
@@ -20,7 +20,7 @@ export default function Home() {
       <LayananClient />
       <ProjectClient />
       <Mitra />
-      <NewBlogClient />
+      <NewBlog />
       <CallToAction />
       <Footer />
       <ParentAnnouncement />

@@ -9,8 +9,8 @@ import { Image, Button, Link } from "@nextui-org/react";
 import ButtonUI from "../ui/ButtonUI";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
-import MitraBrandRender from "./MitraBrandRender";
-import MitraCafeRender from "./MitraCafeRender";
+import MitraCafe from "./MitraCafe";
+import MitraBrand from "./MitraBrand";
 
 import { motion } from "framer-motion";
 
@@ -53,7 +53,7 @@ const Mitra = () => {
           }}
           className="project__title col-span-3"
         >
-          <MitraBrandRender />
+          <MitraBrand />
         </motion.div>
         <motion.div
           initial="hidden"
@@ -65,7 +65,7 @@ const Mitra = () => {
             hidden: { opacity: 0, y: 50 },
           }}
         >
-          <MitraCafeRender />
+          <MitraCafe/>
         </motion.div>
       </div>
     </>

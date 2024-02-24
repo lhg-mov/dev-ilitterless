@@ -5,7 +5,7 @@ import NewBlog from "./NewBlog";
 
 import { motion } from "framer-motion";
 
-const NewBlogClient = () => {
+const NewBlogClient = ({children}: {children: React.ReactNode}) => {
   return (
     <motion.div
       initial="hidden"
@@ -17,7 +17,7 @@ const NewBlogClient = () => {
         hidden: { opacity: 0, y: -100 },
       }}
     >
-      <NewBlog />
+      {children}
     </motion.div>
   );
 };

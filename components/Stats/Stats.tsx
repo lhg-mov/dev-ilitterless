@@ -1,7 +1,6 @@
 import React from "react";
 import style from "@/app/ilitterless.module.css";
 
-import CountUp from "react-countup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightLong, faArrowUpRightFromSquare, faPlus } from "@fortawesome/free-solid-svg-icons";
 

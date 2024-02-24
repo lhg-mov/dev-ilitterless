@@ -1,22 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
-// import required modules
-import { Pagination, Navigation, Autoplay } from "swiper/modules";
+import React from "react";
 
 import style from "@/app/ilitterless.module.css";
 import ButtonUI from "../ui/ButtonUI";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Image, Button } from "@nextui-org/react";
-import ProjectRender from "./ProjectRender";
-import { isMobileDevice } from "@/utils/device";
 
 import { motion } from "framer-motion";
 

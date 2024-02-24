@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import style from "@/app/ilitterless.module.css";
 import { Link, Image, Card, CardHeader, link, Button } from "@nextui-org/react";
