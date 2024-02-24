@@ -29,7 +29,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/sign-up/:path*',
+        source: '/sign-up',
         destination: '/waiting',
         permanent: false,
       },
