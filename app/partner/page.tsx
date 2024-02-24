@@ -1,7 +1,7 @@
 import CallToAction from "@/components/CallToAction/CallToAction";
 import Footer from "@/components/Footer/Footer";
 import Navigation from "@/components/Navigation/Navigation";
-import { getPartnerData } from "@/sanity/actions";
+import { getPartnerData, getPartnerTitle } from "@/sanity/actions";
 import React from "react";
 
 import style from "@/app/ilitterless.module.css";
@@ -12,8 +12,14 @@ import ButtonUI from "@/components/ui/ButtonUI";
 import { Link, Image } from "@nextui-org/react";
 import { v4 as uuidv4 } from "uuid";
 
+type PartnerTitle = {
+  title: string;
+  secondaryTitle: string;
+}
+
 const PartnerPage = async () => {
   const render = await getPartnerData();
+  const renderTitle: PartnerTitle = await getPartnerTitle();
   const renderBrand = render.partnerBrand;
   const renderCafe = render.partnerCafe;
   return (
@@ -27,9 +33,9 @@ const PartnerPage = async () => {
         <div className="partner_page__title">
           <div className="relative flex gap-2 items-center w-40 mb-7">
             <div className="border-t-2 border-primary flex-grow"></div>
-            <div className="text-xl text-primary font-extrabold flex-shrink">Our Partner</div>
+            <div className="text-xl text-primary font-extrabold flex-shrink">{renderTitle.title}</div>
           </div>
-          <div className="sm:text-5xl text-4xl font-extrabold sm:w-3/5 w-full">Kami telah Menjalin Kerja Sama dengan Berbagai Pihak.</div>
+          <div className="sm:text-5xl text-4xl font-extrabold sm:w-3/5 w-full">{renderTitle.secondaryTitle}</div>
           <div className="action__button mt-8">
             <ButtonUI text="Ayo Bergabung!" link="/partner/sign-up" type={"accent"} />
           </div>

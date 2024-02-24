@@ -2,7 +2,7 @@ import { defineField, defineType } from "sanity";
 
 export default defineType({
   name: "partnerBrand",
-  title: "Brand Partner",
+  title: "Brand Partner List",
   type: "document",
   fields: [
     defineField({

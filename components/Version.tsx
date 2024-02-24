@@ -5,7 +5,7 @@ const Version = () => {
   const uid = uuidv4();
   return (
     <div className="text-default-500 text-start">
-      <div>Staging - 0.1.5</div>
+      <div>Staging - 0.1.6</div>
       <div className="text-tiny text-default-400">UID - {uid}</div>
     </div>
   );

@@ -485,3 +485,131 @@ export const getProjectContent = async (params: GetSlug) => {
     throw error;
   }
 };
+
+export const getContact = async () => {
+  try {
+    const contactQuery = await client.fetch(
+      groq`*[_type == "contact"][0]{
+        _id,
+        title,
+        description,
+        address,
+        instagram,
+        linkedin,
+        facebook,
+        whatsapp,
+        email,
+     }`
+    );
+
+    return contactQuery;
+  } catch (error) {
+    console.error("Error fetching Contact query! --> ", error);
+    throw error;
+  }
+};
+
+export const getProjectTitle = async () => {
+  try {
+    const projectQuery = await client.fetch(
+      groq`*[_type == "projectPage"][0]{
+        title,
+        secondaryTitle,
+     }`
+    );
+
+    return projectQuery;
+  } catch (error) {
+    console.error("Error fetching project Title query! --> ", error);
+    throw error;
+  }
+};
+
+export const getProject = async () => {
+  try {
+    const projectQuery = await client.fetch(
+      groq`*[_type == "projects"] | order(_createdAt asc){
+        _id,
+        title,
+        status,
+          startProject,
+        "slug": slug.current,
+        mainImage {
+          alt,
+           asset->{
+             url
+           }
+        },
+      }`
+    );
+
+    return projectQuery;
+  } catch (error) {
+    console.error("Error fetching Project query! --> ", error);
+    throw error;
+  }
+};
+
+export const getPartnerTitle = async () => {
+  try {
+    const partnerQuery = await client.fetch(
+      groq`*[_type == "partnerPage"][0]{
+        title,
+        secondaryTitle,
+     }`
+    );
+
+    return partnerQuery;
+  } catch (error) {
+    console.error("Error fetching Partner Title query! --> ", error);
+    throw error;
+  }
+};
+
+export const getBlogTitle = async () => {
+  try {
+    const blogQuery = await client.fetch(
+      groq`*[_type == "blogPage"][0]{
+        title,
+        secondaryTitle,
+     }`
+    );
+
+    return blogQuery;
+  } catch (error) {
+    console.error("Error fetching Blog Title query! --> ", error);
+    throw error;
+  }
+};
+
+export const getServiceTitle = async () => {
+  try {
+    const serviceQuery = await client.fetch(
+      groq`*[_type == "servicePage"][0]{
+        title,
+     }`
+    );
+
+    return serviceQuery;
+  } catch (error) {
+    console.error("Error fetching Service Title query! --> ", error);
+    throw error;
+  }
+};
+
+export const getStatsTitle = async () => {
+  try {
+    const statsQuery = await client.fetch(
+      groq`*[_type == "statsPage"][0]{
+        title,
+        secondaryTitle,
+        link,
+     }`
+    );
+
+    return statsQuery;
+  } catch (error) {
+    console.error("Error fetching Stats Title query! --> ", error);
+    throw error;
+  }
+};

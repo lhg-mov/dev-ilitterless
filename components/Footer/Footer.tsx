@@ -7,11 +7,26 @@ import Version from "../Version";
 
 import { Image } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faLinkedin, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faInstagram, faLinkedin, faWhatsapp, faFacebook } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { ThemeSwitcher } from "../Navigation/ThemeSwitcher";
 
-const Footer = () => {
+import {getContact} from "@/sanity/actions";
+
+type Contact = {
+  _id: string;
+  title: string;
+  description: string;
+  address: string;
+  instagram: string;
+  linkedin: string;
+  facebook: string;
+  whatsapp: string;
+  email: string;
+}
+
+const Footer = async () => {
+  const render: Contact = await getContact();
   return (
     <div className="border-t-[1px] border-default-500">
       <div className={style.footer}>
@@ -20,20 +35,33 @@ const Footer = () => {
             <Image src="/ilitterless_black.png" alt="iLitterless Logo" width={150} height={60} className="dark:hidden pointer-events-none block" draggable="false" />
             <Image src="/ilitterless_white.PNG" alt="iLitterless Logo" width={150} height={60} className="dark:block hidden dark:w-[150px] dark:h-[60px] w-0 h-0 object-contain pointer-events-none" draggable="false" />
             <div className="text-2xl font-extrabold mt-5">iLitterless Indonesia</div>
-            <div className="text-default-500 mt-3">Jl. Pulau Sayang No. 9, Jawa Timur, Malang, Indonesia, 65117</div>
-            <div className="social__media flex gap-4 mt-7">
-              <Link href="https://instagram.com/@ilitterless.indonesia">
-                <FontAwesomeIcon icon={faInstagram} className="w-5 h-5" />
-              </Link>
-              <Link href="https://www.linkedin.com/company/ilitterless/">
-                <FontAwesomeIcon icon={faLinkedin} className="w-5 h-5" />
-              </Link>
-              <Link href="mailto:ilitterless@gmail.com">
-                <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5" />
-              </Link>
-              <Link href="https://wa.me/6281369517434">
-                <FontAwesomeIcon icon={faWhatsapp} className="w-5 h-5" />
-              </Link>
+            <div className="text-default-500 mt-3">{render.address}</div>
+            <div className="social__media flex gap-4 mt-4">
+            <Link href={render.instagram} target="_black">
+                  <div className="social__media__item items-center">
+                    <FontAwesomeIcon icon={faInstagram} className="text-primary" />
+                  </div>
+                </Link>
+                <Link href={render.linkedin} target="_black">
+                  <div className="social__media__item items-center">
+                    <FontAwesomeIcon icon={faLinkedin} className="text-primary" />
+                  </div>
+                </Link>
+                <Link href={render.facebook} target="_black">
+                  <div className="social__media__item items-center">
+                    <FontAwesomeIcon icon={faFacebook} className="text-primary" />
+                  </div>
+                </Link>
+                <Link href={`https://wa.me/${render.whatsapp}`} target="_black">
+                  <div className="social__media__item items-center">
+                    <FontAwesomeIcon icon={faWhatsapp} className="text-primary" />
+                  </div>
+                </Link>
+                <Link href={render.email} target="_black">
+                  <div className="social__media__item items-center">
+                    <FontAwesomeIcon icon={faEnvelope} className="text-primary" />
+                  </div>
+                </Link>
             </div>
             <div className="version_id mt-5">
             <Version />
@@ -66,16 +94,16 @@ const Footer = () => {
             <div className="footer__link_header font-semibold">Registrasi</div>
             <ul className="space-y-2 text-default-500 mt-4">
               <li>
-                <Link href={`/waiting`}>i-Cos</Link>
+                <Link href={`/sign-up/i-cos`}>i-Cos</Link>
               </li>
               <li>
-                <Link href={`/waiting`}>PML</Link>
+                <Link href={`/sign-up/pml`}>PML</Link>
               </li>
               <li>
-                <Link href={`/waiting`}>Goes to School</Link>
+                <Link href={`/sign-up/goes-to-school`}>Goes to School</Link>
               </li>
               <li>
-                <Link href={`/waiting`}>Kolaborasi</Link>
+                <Link href={`/sign-up/collaboration`}>Kolaborasi</Link>
               </li>
             </ul>
           </div>

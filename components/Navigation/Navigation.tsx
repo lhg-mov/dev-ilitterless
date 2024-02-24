@@ -165,7 +165,7 @@ export default function Navigation() {
         <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu className="dark:bg-neutral-950">
         <NavbarMenuItem className="pt-10">
           <TransLink href="/about" title="Tentang" className={`w-full ${pathname === '/about' ? 'disable-link': ''}`} />
         </NavbarMenuItem>

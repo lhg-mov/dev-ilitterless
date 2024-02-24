@@ -6,15 +6,21 @@ import CallToAction from "@/components/CallToAction/CallToAction";
 import Footer from "@/components/Footer/Footer";
 
 import { Image } from "@nextui-org/react";
-import { getProjectHome } from "@/sanity/actions";
+import { getProject, getProjectTitle } from "@/sanity/actions";
 import { v4 as uuidv4 } from "uuid";
 
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
+type ProjectTitle = {
+  title: string;
+  secondaryTitle: string;
+}
+
 const ProjectsPage = async () => {
-  const renderProject = await getProjectHome();
+  const renderProject = await getProject();
+  const renderTitle: ProjectTitle = await getProjectTitle();
   return (
     <>
       <Navigation />
@@ -22,10 +28,10 @@ const ProjectsPage = async () => {
         <div className="project_page__title">
           <div className="text-xl font-bold text-default-500 relative w-36 flex items-center gap-2">
             <div className="border-t-2 border-default-500 flex-grow"></div>
-            <div className="flex-shrink">Our Project</div>
+            <div className="flex-shrink">{renderTitle.title}</div>
           </div>
           <div className="project_page__description my-7">
-            <div className="sm:text-5xl text-3xl font-extrabold text-primary w-full">Kami akan selalu berinovasi untuk mewujudkan minimnya sampah di Indonesia</div>
+            <div className="sm:text-5xl text-3xl font-extrabold text-primary w-full">{renderTitle.secondaryTitle}</div>
           </div>
         </div>
         <div className="project_page__content py-16 grid xl:grid-cols-2 grid-cols-1 gap-10">

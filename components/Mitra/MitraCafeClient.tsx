@@ -1,8 +1,19 @@
 import React from 'react'
 
+import {motion} from "framer-motion";
+
 const MitraCafeClient = ({children}: {children: React.ReactNode}) => {
   return (
-    <div>{children}</div>
+    <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.75, type: "spring", ease: "easeOut" }}
+          variants={{
+            visible: { opacity: 1, y: 0 },
+            hidden: { opacity: 0, y: 50 },
+          }}
+        >{children}</motion.div>
   )
 }
 

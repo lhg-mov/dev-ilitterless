@@ -1,14 +1,11 @@
-"use client";
 
 import React from "react";
-import Stats from "./Stats";
-import StatsRender from "./StatsRender";
 
-const StatsClient = () => {
+const StatsClient = ({children}:{children: React.ReactNode}) => {
   return (
-    <Stats>
-      <StatsRender />
-    </Stats>
+    <div className="ilitterless_stats__content col-span-5">
+      {children}
+    </div>
   );
 };
 

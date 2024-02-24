@@ -5,7 +5,7 @@ import { createHash } from "crypto";
 
 export default defineType({
   name: "projects",
-  title: "Projects",
+  title: "Projects List",
   type: "document",
   fields: [
     defineField({

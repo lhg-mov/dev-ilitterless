@@ -61,7 +61,7 @@ const CallToAction = () => {
             <div className="cta__button mt-10">
               <ButtonUI
                 text="Mulai Sekarang"
-                link="/waiting"
+                link="/sign-up"
                 type="primary"
                 endContent={
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

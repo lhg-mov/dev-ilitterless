@@ -97,16 +97,7 @@ export default defineType({
         title: "Active Email",
         type: "string",
         description: "Provide a valid Email. For Footer Section.",
-        validation: (Rule: any) => [
-            Rule.required().error("Please provide a link."),
-            Rule.custom((value: string) => {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-                if (!emailRegex.test(value)) {
-                    return 'Please provide a valid Email as requested.';
-                }
-            }),
-          ],
+        validation: (Rule) => [Rule.required()],
       }),
   ],
 });

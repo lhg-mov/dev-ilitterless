@@ -7,6 +7,7 @@ import { Chip, Image } from "@nextui-org/react";
 import style from "@/app/ilitterless.module.css";
 import ButtonUI from "../ui/ButtonUI";
 import { Post, Product } from "@/sanity/types";
+import { getServiceTitle } from "@/sanity/actions";
 
 interface Props {
   id: string;
@@ -21,16 +22,21 @@ interface Service {
   serviceData: any;
 }
 
+type ServiceTitle = {
+  title: string;
+}
+
 export const revalidate = 60;
 
-const ServicesContent = ({ serviceData }: Service) => {
+const ServicesContent = async ({ serviceData }: Service) => {
+  const render: ServiceTitle = await getServiceTitle();
   return (
     <div className={style.servicepage} key={serviceData?._id}>
       <div className="grid sm:grid-cols-2 grid-cols-1 items-center gap-12 relative">
         <div className="service__head sm:order-first order-last">
           <div className="service__category">
             <div className="inline-flex px-2 pt-0.5 pb-1 bg-primary text-white font-semibold rounded-full text-sm">
-              Produk & Layanan
+              {render.title}
             </div>
           </div>
           <div className="service__title py-5">

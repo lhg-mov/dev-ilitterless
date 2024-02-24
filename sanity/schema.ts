@@ -17,7 +17,12 @@ import aboutTimeline from "./schemas/aboutTimeline";
 import introImage from "./schemas/introImage";
 import fastButton from "./schemas/fastButton";
 import contact from "./schemas/contact";
+import projectPage from "./schemas/projectPage";
+import partnerPage from "./schemas/partnerPage";
+import blogPage from "./schemas/blogPage";
+import servicePage from "./schemas/productServicesPage"
+import statsPage from "./schemas/statsPage";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [fastButton, portfolioLink, intro, introImage, statistik, about, aboutTimeline, productServices, projects, partnerBrand, partnerCafe, post, author, category, blockContent, contact],
+  types: [fastButton, portfolioLink, intro, introImage, statsPage, statistik, about, aboutTimeline, servicePage, productServices, projectPage, projects, partnerPage, partnerBrand, partnerCafe, blogPage, post, author, category, blockContent, contact],
 };

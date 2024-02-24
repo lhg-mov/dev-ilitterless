@@ -1,3 +1,6 @@
+"use client";
+
+
 import React from 'react'
 import NewBlogClient from './NewBlogClient'
 import NewBlogRender from './NewBlogRender'

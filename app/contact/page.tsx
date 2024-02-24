@@ -9,11 +9,26 @@ import { Input, Textarea, Button, Link } from "@nextui-org/react";
 import { faFacebook, faInstagram, faLinkedin, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const ContactPage = () => {
+import {getContact} from "@/sanity/actions";
+
+type Contact = {
+  _id: string;
+  title: string;
+  description: string;
+  address: string;
+  instagram: string;
+  linkedin: string;
+  facebook: string;
+  whatsapp: string;
+  email: string;
+}
+
+const ContactPage = async () => {
+  const render: Contact = await getContact();
   return (
     <>
       <Navigation />
-      <div className={style.contactpage}>
+      <div className={style.contactpage} key={render._id}>
         <div className="contact__content py-20">
           <div className="grid sm:grid-cols-2 grid-cols-1 items-center">
             <div className="contact__title">
@@ -22,29 +37,29 @@ const ContactPage = () => {
                 <div className="flex-shrink">Contact</div>
               </div>
               <div className="mt-3">
-                <div className="sm:text-5xl text-4xl font-extrabold text-primary">Beritahu Kami Jika Kamu Membutuhkan Sesuatu</div>
-                <div className="description text-default-500 mt-5">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse, laudantium consequuntur debitis cumque amet eveniet.</div>
+                <div className="sm:text-5xl text-4xl font-extrabold text-primary">{render.title}</div>
+                <div className="description text-default-500 mt-5">{render.description}</div>
               </div>
               <div className="social__media flex flex-wrap items-center sm:gap-10 gap-5 mt-10">
-                <Link href="/instagram" target="_black">
+                <Link href={render.instagram} target="_black">
                   <div className="social__media__item flex gap-3 items-center">
                     <FontAwesomeIcon icon={faInstagram} className="text-primary" />
                     <div className="social__media_title font-semibold text-default-700">Instagram</div>
                   </div>
                 </Link>
-                <Link href="/linkedin" target="_black">
+                <Link href={render.linkedin} target="_black">
                   <div className="social__media__item flex gap-3 items-center">
                     <FontAwesomeIcon icon={faLinkedin} className="text-primary" />
                     <div className="social__media_title font-semibold text-default-700">LinkedIn</div>
                   </div>
                 </Link>
-                <Link href="/linkedin" target="_black">
+                <Link href={render.facebook} target="_black">
                   <div className="social__media__item flex gap-3 items-center">
                     <FontAwesomeIcon icon={faFacebook} className="text-primary" />
                     <div className="social__media_title font-semibold text-default-700">Facebook</div>
                   </div>
                 </Link>
-                <Link href="/linkedin" target="_black">
+                <Link href={`https://wa.me/${render.whatsapp}`} target="_black">
                   <div className="social__media__item flex gap-3 items-center">
                     <FontAwesomeIcon icon={faWhatsapp} className="text-primary" />
                     <div className="social__media_title font-semibold text-default-700">WhatsApp</div>

@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 import style from "@/app/ilitterless.module.css";

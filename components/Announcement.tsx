@@ -39,7 +39,7 @@ const Announcement = () => {
               </div>
 
               <p className={`text-sm text-gray-800 dark:text-gray-800 pb-1 mt-2`}>
-                Halo! Saat ini website sedang dalam tahap pengembangan dan user testing di versi <strong>Staging - 0.1.5</strong>. Beberapa fungsi/ fitur belum sepenuhnya dapat digunakan. Jika anda menemukan error atau hal yang tidak seharusnya silahkan hubungi Kami. Terima Kasih! 
+                Halo! Saat ini website sedang dalam tahap pengembangan dan user testing di versi <strong>Staging - 0.1.6</strong>. Beberapa fungsi/ fitur belum sepenuhnya dapat digunakan. Jika anda menemukan error atau hal yang tidak seharusnya silahkan hubungi Kami. Terima Kasih! 
               </p>
               
               <div className="button__out mt-4 sm:hidden block">

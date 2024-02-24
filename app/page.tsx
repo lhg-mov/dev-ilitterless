@@ -1,10 +1,10 @@
 import React from "react";
 
 import Intro from "@/components/Intro/Intro";
-import StatsClient from "@/components/Stats/StatsClient";
+import Stats from "@/components/Stats/Stats";
 import Navigation from "@/components/Navigation/Navigation";
-import LayananClient from "@/components/Service/LayananClient";
-import ProjectClient from "@/components/Project/ProjectClient";
+import Layanan from "@/components/Service/Layanan";
+import Project from "@/components/Project/Project";
 import Mitra from "@/components/Mitra/Mitra";
 import NewBlog from "@/components/NewBlog/NewBlog";
 import CallToAction from "@/components/CallToAction/CallToAction";
@@ -16,9 +16,9 @@ export default function Home() {
     <>
       <Navigation />
       <Intro />
-      <StatsClient />
-      <LayananClient />
-      <ProjectClient />
+      <Stats />
+      <Layanan />
+      <Project />
       <Mitra />
       <NewBlog />
       <CallToAction />
