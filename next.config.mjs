@@ -26,6 +26,15 @@ const nextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      {
+        source: '/sign-up/**',
+        destination: '/waiting',
+        permanent: false,
+      },
+    ]
+  },
 };
 
 export default withSentryConfig(nextConfig, {
