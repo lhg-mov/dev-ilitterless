@@ -1,5 +1,5 @@
 import React from "react";
-const GoesToSchoolForm = () => {
+const SignUpForm = () => {
   return (
     <div>
         Coming Soon
@@ -7,4 +7,4 @@ const GoesToSchoolForm = () => {
   );
 };
 
-export default GoesToSchoolForm;
+export default SignUpForm;
