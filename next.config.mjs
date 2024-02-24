@@ -33,29 +33,21 @@ const nextConfig = {
         destination: '/waiting',
         permanent: false,
       },
-    ]
-    return [
       {
         source: '/sign-up/i-cos',
         destination: '/waiting',
         permanent: false,
       },
-    ]
-    return [
       {
         source: '/sign-up/pml',
         destination: '/waiting',
         permanent: false,
       },
-    ]
-    return [
       {
         source: '/sign-up/goes-to-school',
         destination: '/waiting',
         permanent: false,
       },
-    ]
-    return [
       {
         source: '/sign-up/collaboration',
         destination: '/waiting',
